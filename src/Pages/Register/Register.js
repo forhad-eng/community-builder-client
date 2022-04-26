@@ -27,6 +27,7 @@ const Register = () => {
         formData.name = user?.displayName
         formData.email = user?.email
         formData.activity = activity.activityName
+        formData.picture = activity.picture
         const { data } = await axios.post(url, formData)
         if (data.acknowledged) {
             alert('Registered')

@@ -1,5 +1,6 @@
 import 'react-loader-spinner/dist'
 import { Route, Routes } from 'react-router-dom'
+import BookedActivities from './Pages/Home/BookedActivities/BookedActivities'
 import Home from './Pages/Home/Home'
 import Nav from './Pages/Nav/Nav'
 import Register from './Pages/Register/Register'
@@ -21,6 +22,7 @@ function App() {
                         </RequireAuth>
                     }
                 />
+                <Route path="/booked-activity" element={<BookedActivities />} />
             </Routes>
         </div>
     )
