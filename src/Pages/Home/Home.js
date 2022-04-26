@@ -1,4 +1,5 @@
 import React from 'react'
+import Activities from './Activities/Activities'
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
                     </button>
                 </div>
             </div>
+            <Activities />
         </div>
     )
 }
