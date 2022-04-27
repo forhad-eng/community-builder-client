@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 import logo from '../../assets/logos/Group 1329.png'
 import plusLogo from '../../assets/logos/plus 1.png'
 import volunteerLogo from '../../assets/logos/users-alt 1.png'
@@ -10,7 +10,9 @@ const Admin = () => {
     return (
         <div className="py-4">
             <header className="flex items-center gap-12 px-14">
-                <img style={{ height: '60px' }} src={logo} alt="" />
+                <Link to="/">
+                    <img style={{ height: '60px' }} src={logo} alt="" />
+                </Link>
                 <p className="font-[500]">{current}</p>
             </header>
             <div className="admin-container">

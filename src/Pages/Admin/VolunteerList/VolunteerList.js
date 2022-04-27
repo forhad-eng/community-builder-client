@@ -30,12 +30,12 @@ const VolunteerList = () => {
         <div className="bg-white p-4 rounded-md">
             <table className="text-center">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email ID</th>
-                        <th>Registration Date</th>
-                        <th>Activity</th>
-                        <th>Action</th>
+                    <tr className="bg-[#e5e5e5]">
+                        <td>Name</td>
+                        <td>Email ID</td>
+                        <td>Registration Date</td>
+                        <td>Activity</td>
+                        <td>Action</td>
                     </tr>
                 </thead>
                 <tbody>
