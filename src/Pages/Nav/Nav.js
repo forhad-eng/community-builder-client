@@ -1,15 +1,28 @@
 import { signOut } from 'firebase/auth'
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logo from '../../assets/logos/Group 1329.png'
 import { auth } from '../../Firebase/firebase.init'
 
 const Nav = () => {
     const [user] = useAuthState(auth)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const path = location.pathname
+    let display = true
+
+    if (path === '/admin' || path === '/admin/volunteer' || path === '/admin/add-event') {
+        display = false
+    }
+
+    const singOutHandle = () => {
+        signOut(auth)
+        navigate('/')
+    }
 
     return (
-        <nav className="flex justify-between lg:px-16 lg:py-4">
+        <nav className={`flex justify-between lg:px-16 lg:py-4 ${display || 'hidden'}`}>
             <Link to="/">
                 <img style={{ height: '50px' }} src={logo} alt="volunteer builder logo" />
             </Link>
@@ -33,12 +46,12 @@ const Nav = () => {
                         <button className="bg-[#3F90FC] text-white px-6 py-2 rounded-md">Booked Activity</button>
                     </Link>
                 ) : (
-                    <Link to="/register/:id">
-                        <button className="bg-[#3F90FC] text-white px-6 py-2 rounded-md">Register</button>
+                    <Link to="/admin">
+                        <button className="bg-[#3F90FC] text-white px-6 py-2 rounded-md">Admin</button>
                     </Link>
                 )}
                 {user ? (
-                    <button onClick={() => signOut(auth)} className="bg-[#434141] text-white px-6 py-2 rounded-md">
+                    <button onClick={singOutHandle} className="bg-[#434141] text-white px-6 py-2 rounded-md">
                         Sign Out
                     </button>
                 ) : (

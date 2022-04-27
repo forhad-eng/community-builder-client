@@ -1,5 +1,8 @@
 import 'react-loader-spinner/dist'
 import { Route, Routes } from 'react-router-dom'
+import AddEvent from './Pages/Admin/AddEvent/AddEvent'
+import Admin from './Pages/Admin/Admin'
+import VolunteerList from './Pages/Admin/VolunteerList/VolunteerList'
 import BookedActivities from './Pages/Home/BookedActivities/BookedActivities'
 import Home from './Pages/Home/Home'
 import Nav from './Pages/Nav/Nav'
@@ -13,6 +16,7 @@ function App() {
             <Nav />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/booked-activity" element={<BookedActivities />} />
                 <Route path="/login" element={<SocialLogin />} />
                 <Route
                     path="/register/:id"
@@ -22,7 +26,10 @@ function App() {
                         </RequireAuth>
                     }
                 />
-                <Route path="/booked-activity" element={<BookedActivities />} />
+                <Route path="/admin" element={<Admin />}>
+                    <Route path="volunteer" element={<VolunteerList />} />
+                    <Route path="add-event" element={<AddEvent />} />
+                </Route>
             </Routes>
         </div>
     )
