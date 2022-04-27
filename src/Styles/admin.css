@@ -4,5 +4,6 @@
     gap: 20px;
 }
 .admin-item {
+    height: calc(100vh - 95px);
     background-color: #e5e5e5;
 }
