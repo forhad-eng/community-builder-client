@@ -14,6 +14,18 @@ const VolunteerList = () => {
         getVolunteers()
     }, [])
 
+    const activityDeleteHandle = async _id => {
+        const proceed = window.confirm('Are you sure you want to delete?')
+        if (proceed) {
+            const url = `http://localhost:5000/book/${_id}`
+            const { data } = await axios.delete(url)
+            if (data.acknowledged) {
+                const filter = volunteers.filter(volunteer => volunteer._id !== _id)
+                setVolunteers(filter)
+            }
+        }
+    }
+
     return (
         <div className="bg-white p-4 rounded-md">
             <table className="text-center">
@@ -28,15 +40,15 @@ const VolunteerList = () => {
                 </thead>
                 <tbody>
                     {volunteers.map(volunteer => {
-                        const { activity, name, email, date } = volunteer
+                        const { activity, name, email, date, _id } = volunteer
                         return (
-                            <tr>
+                            <tr key={_id}>
                                 <td>{name}</td>
                                 <td className="inline-block ml-8">{email}</td>
                                 <td>{date}</td>
                                 <td>{activity}</td>
                                 <td>
-                                    <button>
+                                    <button onClick={() => activityDeleteHandle(_id)}>
                                         <img
                                             style={{ height: '20px', background: 'red', borderRadius: '2px' }}
                                             src={trashIcon}
