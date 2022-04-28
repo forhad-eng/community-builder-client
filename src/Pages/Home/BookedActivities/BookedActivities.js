@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import axiosPrivate from '../../../apis/AxiosPrivate'
 import { auth } from '../../../Firebase/firebase.init'
 import BookedActivity from '../BookedActivity/BookedActivity'
 
@@ -12,11 +13,7 @@ const BookedActivities = () => {
         const getBookedActivity = async () => {
             if (user) {
                 const url = `http://localhost:5000/book?email=${user.email}`
-                const { data } = await axios.get(url, {
-                    headers: {
-                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                    }
-                })
+                const { data } = await axiosPrivate.get(url)
                 setBookedActivities(data)
             }
         }

@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import logo from '../../assets/logos/Group 1329.png'
 import plusLogo from '../../assets/logos/plus 1.png'
 import volunteerLogo from '../../assets/logos/users-alt 1.png'
-import { auth } from '../../Firebase/firebase.init'
 import '../../Styles/admin.css'
-import SocialLogin from '../SocialLogin/SocialLogin'
 
 const Admin = () => {
-    const [admin] = useAuthState(auth)
     const [current, setCurrent] = useState('')
     return (
         <div className="py-4">
@@ -42,7 +38,9 @@ const Admin = () => {
                         </div>
                     </NavLink>
                 </div>
-                <div className="admin-item p-6">{admin ? <Outlet /> : <SocialLogin />}</div>
+                <div className="admin-item p-6">
+                    <Outlet />
+                </div>
             </div>
         </div>
     )

@@ -1,26 +1,32 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import axiosPrivate from '../../../apis/AxiosPrivate'
 import trashIcon from '../../../assets/logos/trash-2 9.png'
-import { auth } from '../../../Firebase/firebase.init'
 
 const VolunteerList = () => {
-    const [admin] = useAuthState(auth)
     const [volunteers, setVolunteers] = useState([])
-    console.log(admin)
 
     useEffect(() => {
         const getVolunteers = async () => {
-            const url = 'http://localhost:5000/book'
-            const { data } = await axios.get(url, {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
+            const url = `http://localhost:5000/book`
+            const { data } = await axiosPrivate.get(url)
             setVolunteers(data)
         }
         getVolunteers()
     }, [])
+
+    // useEffect(() => {
+    //     const getVolunteers = async () => {
+    //         const url = 'http://localhost:5000/book'
+    //         const { data } = await axios.get(url, {
+    //             headers: {
+    //                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    //             }
+    //         })
+    //         setVolunteers(data)
+    //     }
+    //     getVolunteers()
+    // }, [])
 
     const activityDeleteHandle = async _id => {
         const proceed = window.confirm('Are you sure you want to delete?')
