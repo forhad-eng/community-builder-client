@@ -10,7 +10,7 @@ const Home = () => {
                     <input
                         type="text"
                         placeholder="Search..."
-                        className="py-2 pl-3"
+                        className="py-2 pl-3 outline-none"
                         style={{ border: '1px solid #D6D6D6', borderRight: '0px', borderRadius: '6px 0 0 6px' }}
                     />
                     <button className=" bg-[#3F90FC] text-white mb-2 px-6 py-2" style={{ borderRadius: '0 6px 6px 0' }}>

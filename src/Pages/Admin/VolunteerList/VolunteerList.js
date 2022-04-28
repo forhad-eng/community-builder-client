@@ -1,14 +1,22 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import trashIcon from '../../../assets/logos/trash-2 9.png'
+import { auth } from '../../../Firebase/firebase.init'
 
 const VolunteerList = () => {
+    const [admin] = useAuthState(auth)
     const [volunteers, setVolunteers] = useState([])
+    console.log(admin)
 
     useEffect(() => {
         const getVolunteers = async () => {
             const url = 'http://localhost:5000/book'
-            const { data } = await axios.get(url)
+            const { data } = await axios.get(url, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
             setVolunteers(data)
         }
         getVolunteers()

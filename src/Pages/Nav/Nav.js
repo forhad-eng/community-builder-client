@@ -41,11 +41,12 @@ const Nav = () => {
                         <Link to="/">Blog</Link>
                     </li>
                 </ul>
-                {user ? (
+                {user?.email === 'forhadu.cse@gmail.com' || (
                     <Link to="/booked-activity">
                         <button className="bg-[#3F90FC] text-white px-6 py-2 rounded-md">Booked Activity</button>
                     </Link>
-                ) : (
+                )}
+                {user?.email === 'forhadu.cse@gmail.com' && (
                     <Link to="/admin">
                         <button className="bg-[#3F90FC] text-white px-6 py-2 rounded-md">Admin</button>
                     </Link>
