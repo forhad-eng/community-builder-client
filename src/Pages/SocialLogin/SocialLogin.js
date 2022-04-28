@@ -17,7 +17,7 @@ const SocialLogin = () => {
         const getToken = async () => {
             const email = user?.user?.email
             if (email) {
-                const url = `http://localhost:5000/login`
+                const url = `https://secure-everglades-46182.herokuapp.com/login`
                 const { data } = await axios.post(url, { email })
                 localStorage.setItem('accessToken', data.accessToken)
                 navigate(from, { replace: true })

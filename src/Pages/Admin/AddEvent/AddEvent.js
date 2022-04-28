@@ -8,7 +8,7 @@ const AddEvent = () => {
     const navigate = useNavigate()
 
     const onSubmit = async formData => {
-        const url = 'http://localhost:5000/activity'
+        const url = 'https://secure-everglades-46182.herokuapp.com/activity'
         const { data } = await axios.post(url, formData)
         if (data.acknowledged) {
             alert('Event added')

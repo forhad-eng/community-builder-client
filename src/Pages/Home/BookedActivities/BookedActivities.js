@@ -12,7 +12,7 @@ const BookedActivities = () => {
     useEffect(() => {
         const getBookedActivity = async () => {
             if (user) {
-                const url = `http://localhost:5000/book?email=${user.email}`
+                const url = `https://secure-everglades-46182.herokuapp.com/book?email=${user.email}`
                 const { data } = await axiosPrivate.get(url)
                 setBookedActivities(data)
             }
@@ -24,7 +24,7 @@ const BookedActivities = () => {
         const proceed = window.confirm('Are you sure you want to cancel?')
         if (proceed) {
             const filter = bookedActivities.filter(activity => activity._id !== _id)
-            const url = `http://localhost:5000/book/${_id}`
+            const url = `https://secure-everglades-46182.herokuapp.com/book/${_id}`
             const { data } = await axios.delete(url)
             if (data.acknowledged) {
                 setBookedActivities(filter)

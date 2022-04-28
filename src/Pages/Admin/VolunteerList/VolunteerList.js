@@ -8,7 +8,7 @@ const VolunteerList = () => {
 
     useEffect(() => {
         const getVolunteers = async () => {
-            const url = `http://localhost:5000/book`
+            const url = `https://secure-everglades-46182.herokuapp.com/book`
             const { data } = await axiosPrivate.get(url)
             setVolunteers(data)
         }
@@ -17,7 +17,7 @@ const VolunteerList = () => {
 
     // useEffect(() => {
     //     const getVolunteers = async () => {
-    //         const url = 'http://localhost:5000/book'
+    //         const url = 'https://secure-everglades-46182.herokuapp.com/book'
     //         const { data } = await axios.get(url, {
     //             headers: {
     //                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -31,7 +31,7 @@ const VolunteerList = () => {
     const activityDeleteHandle = async _id => {
         const proceed = window.confirm('Are you sure you want to delete?')
         if (proceed) {
-            const url = `http://localhost:5000/book/${_id}`
+            const url = `https://secure-everglades-46182.herokuapp.com/book/${_id}`
             const { data } = await axios.delete(url)
             if (data.acknowledged) {
                 const filter = volunteers.filter(volunteer => volunteer._id !== _id)

@@ -15,7 +15,7 @@ const Register = () => {
 
     useEffect(() => {
         const getActivity = async () => {
-            const url = `http://localhost:5000/activity/${id}`
+            const url = `https://secure-everglades-46182.herokuapp.com/activity/${id}`
             const { data } = await axios.get(url)
             setActivity(data)
         }
@@ -23,7 +23,7 @@ const Register = () => {
     }, [])
 
     const onSubmit = async formData => {
-        const url = 'http://localhost:5000/book'
+        const url = 'https://secure-everglades-46182.herokuapp.com/book'
         formData.name = user?.displayName
         formData.email = user?.email
         formData.activity = activity.activityName

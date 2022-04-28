@@ -8,7 +8,7 @@ const Activities = () => {
 
     useEffect(() => {
         const getActivities = async () => {
-            const url = 'http://localhost:5000'
+            const url = 'https://secure-everglades-46182.herokuapp.com'
             const { data } = await axios.get(url)
             setActivities(data)
         }
